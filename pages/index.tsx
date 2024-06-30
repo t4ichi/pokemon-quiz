@@ -92,26 +92,22 @@ const IndexPage : NextPage<IndexPageProps> = (props: IndexPageProps) => {
 
   return (
     <div>
-      <h1>種族値Quiz</h1>
+      <h1>ポケモン種族値クイズ</h1>
 
       {pokemonList.slice(0, 1).map((pokemon, index) => (
         <div key={index}>
-          <p>H: {pokemon.hp}</p>
-          <p>A: {pokemon.attack}</p>
-          <p>B: {pokemon.defense}</p>
-          <p>C: {pokemon.specialAttack}</p>
-          <p>D: {pokemon.specialDefense}</p>
-          <p>S: {pokemon.speed}</p>
+          <p>H: {pokemon.hp} A: {pokemon.attack} B: {pokemon.defense} C: {pokemon.specialAttack} D: {pokemon.specialDefense} S: {pokemon.speed}</p>
         </div>
       ))}
-      {shuffledList.map((pokemon, index) => (
-        <div key={index}>
-          <br />
-          <input type="radio" id={`pokemon-${index}`} name="selectedPokemon" value={index} onChange={(e) => setSelectedPokemon(e.target.value)} />
-          <p>{pokemon.name}</p>
-          <img src={pokemon.imageUrl}/>
-        </div>
-      ))}
+      <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
+        {shuffledList.map((pokemon, index) => (
+          <div key={index} style={{ margin: "10px" }}>
+            <input type="radio" id={`pokemon-${index}`} name="selectedPokemon" value={index} onChange={(e) => setSelectedPokemon(e.target.value)} />
+            <p>{pokemon.name}</p>
+            <img src={pokemon.imageUrl} style={{ width: "100px", height: "100px" }} />
+          </div>
+        ))}
+      </div>
       <button onClick={handleAnswer}>解答</button>
       
       <div>
